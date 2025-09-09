@@ -14,4 +14,14 @@ class Category extends Model
         "name",
         "color",
     ];
+
+    /**
+     * Relacion a Threads
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function threads()
+    {
+        return $this->hasMany(Thread::class);
+    }
 }
