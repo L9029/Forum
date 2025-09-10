@@ -45,4 +45,24 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    /**
+     * Relación inversa con el modelo Thread
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function threads()
+    {
+        return $this->hasMany(Thread::class);
+    }
+
+    /**
+     * Obtiene la url del avatar del usuario
+     * 
+     * @return string
+     */
+    public function avatar()
+    {
+        return 'https://gravatar.com/avatar/' . md5($this->email) . '?s=50';
+    }
 }
