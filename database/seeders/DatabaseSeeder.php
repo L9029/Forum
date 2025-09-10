@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\Category;
+use App\Models\Reply;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -24,5 +25,7 @@ class DatabaseSeeder extends Seeder
         Category::factory(10)
             ->hasThreads(20) // Cada categoria tendra 20 hilos
             ->create();
+        
+        Reply::factory(400)->create();
     }
 }
