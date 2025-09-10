@@ -21,7 +21,7 @@ class ThreadFactory extends Factory
         return [
             "category_id" => Category::inRandomOrder()->first()->id ?? Category::factory()->create()->id,
             "user_id" => User::inRandomOrder()->first()->id ?? User::factory()->create()->id,
-            "title" => $this->faker->title(),
+            "title" => $this->faker->sentence(),
             "body" => $this->faker->text(),
         ];
     }
