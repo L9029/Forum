@@ -16,4 +16,14 @@ class Reply extends Model
         "user_id",
         "body",
     ];
+
+    /**
+     * Relación con el modelo User
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user() 
+    {
+        return $this->belongsTo(User::class);
+    }
 }

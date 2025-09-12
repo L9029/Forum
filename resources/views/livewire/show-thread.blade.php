@@ -30,6 +30,9 @@
     </div>
 
     <!-- Respuestas -->
+    @foreach($replies as $reply)
+        <livewire:show-reply :reply="$reply" :key="'reply-' . $reply->id" />
+    @endforeach
     
     <!-- Formulario -->
     <form wire:submit.prevent="saveReply" class="mb-4">
