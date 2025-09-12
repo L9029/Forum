@@ -14,6 +14,6 @@ class Reply extends Model
         "reply_id",
         "thread_id",
         "user_id",
-        "body_id",
+        "body",
     ];
 }

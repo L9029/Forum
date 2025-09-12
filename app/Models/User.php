@@ -57,6 +57,16 @@ class User extends Authenticatable
     }
 
     /**
+     * Relación inversa con el modelo Reply
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function replies()
+    {
+        return $this->hasMany(Reply::class);
+    }
+
+    /**
      * Obtiene la url del avatar del usuario
      * 
      * @return string
