@@ -20,4 +20,11 @@
             </div>
         </div>
     </div>
+
+    <!-- Respuestas Hijas -->
+    @foreach($reply->replies as $item)
+        <div class="ml-8">
+            <livewire:show-reply :reply="$item" :key="'reply-' . $item->id" />
+        </div>
+    @endforeach
 </div>
