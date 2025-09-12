@@ -36,7 +36,7 @@
                     </div>
                     <div class="w-full">
                         <h2 class="mb-4 flex items-start justify-between">
-                            <a href="" class="text-xl font-semibold text-white/60">
+                            <a href="{{ route('thread', $thread->id) }}" class="text-xl font-semibold text-white/60">
                                 {{ $thread->title }}
                             </a>
                             <span class="rounded-full text-xs py-2 px-4 capitalize" style="color: {{ $thread->category->color }}; border: 1px solid {{ $thread->category->color }};">
