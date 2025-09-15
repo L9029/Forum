@@ -9,11 +9,18 @@
                     {{ $reply->user->name }}
                 </p>
 
-                <p class="text-white/60 text-xs">
-                    {{ $reply->body }}
-                </p>
+                <!-- Formulario de Edición -->
+                @if($is_editing)
+                    <form wire:submit.prevent="editChildReply" class="mt-4">
+                        <input class="bg-slate-800 border-1 border-slate-900 rounded-md w-full p-3 text-white/60 text-xs" wire:model.defer="body" type="text" name="body" id="body" placeholder="Escribe una respuesta">
+                    </form>
+                @else
+                    <p class="text-white/60 text-xs">
+                        {{ $reply->body }}
+                    </p>
+                @endif
 
-                <!-- Formulario -->
+                <!-- Formulario de Respuesta -->
                 @if($is_creating)
                     <form wire:submit.prevent="saveChildReply" class="mt-4">
                         <input class="bg-slate-800 border-1 border-slate-900 rounded-md w-full p-3 text-white/60 text-xs" wire:model.defer="body" type="text" name="body" id="body" placeholder="Escribe una respuesta">
@@ -24,7 +31,7 @@
                     @if(is_null($this->reply->reply_id))
                         <a href="#" wire:click.prevent="$toggle('is_creating')" class="hover:text-white">Responder</a>
                     @endif
-                    <a href="#" class="hover:text-white">Editar</a>
+                    <a href="#" wire:click.prevent="$toggle('is_editing')" class="hover:text-white">Editar</a>
                 </p>
             </div>
         </div>

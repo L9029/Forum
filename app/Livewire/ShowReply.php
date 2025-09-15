@@ -10,9 +10,35 @@ class ShowReply extends Component
     public Reply $reply;
     public $body;
     public $is_creating = false;
+    public $is_editing = false;
 
     // No es necesario en este caso ya que Livewire 3 ya renderiza el componente por su cuenta
     // protected $listeners = ['refresh' => '$refresh'];
+
+    public function updatedIsCreating()
+    {
+        $this->reset("body", "is_editing");
+    }
+
+    public function updatedIsEditing()
+    {
+        $this->reset("is_creating");
+        $this->body = $this->reply->body;
+    }
+
+    public function editChildReply()
+    {
+        $this->validate([
+            "body" => "required"
+        ]);
+
+        $this->reply->update([
+            "body" => $this->body,
+        ]);
+
+        $this->reset("body");
+        $this->is_editing = false;
+    }
 
     public function saveChildReply()
     {
