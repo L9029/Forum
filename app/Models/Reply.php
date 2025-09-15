@@ -28,6 +28,16 @@ class Reply extends Model
     }
 
     /**
+     * Relación con el modelo Thread
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function thread() 
+    {
+        return $this->belongsTo(Thread::class);
+    }
+
+    /**
      * Relación para las respuestas hijas de una respuesta
      * 
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
