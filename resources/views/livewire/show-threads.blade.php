@@ -57,7 +57,7 @@
 
                                 {{ $thread->replies_count }} {{ Str::plural('Respuesta', $thread->replies_count) }}
                                 |
-                                <a href="" class="hover:text-white">Editar</a>
+                                <a href="{{ route('threads.edit', $thread) }}" class="hover:text-white">Editar</a>
                             </span>
                         </p>
                     </div>
