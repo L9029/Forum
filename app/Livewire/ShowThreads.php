@@ -24,6 +24,7 @@ class ShowThreads extends Component
         $categories = Category::get();
 
         $query = Thread::query();
+        $query->with("user", "category");
         $query->where("title", "ilike", "%{$this->search_title}%");
 
         if ($this->search_category) {
