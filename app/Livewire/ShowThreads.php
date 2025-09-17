@@ -2,12 +2,15 @@
 
 namespace App\Livewire;
 
+use Livewire\WithPagination;
 use Livewire\Component;
 use App\Models\Category;
 use App\Models\Thread;
 
 class ShowThreads extends Component
 {
+    use WithPagination;
+
     public $search_title;
     public $search_category;
 

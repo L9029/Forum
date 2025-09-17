@@ -22,4 +22,17 @@ class ThreadController extends Controller
             "thread" => $thread,
         ]);
     }
+
+    public function update(Request $request, Thread $thread)
+    {
+        $request->validate([
+            "category_id" => "required|exists:categories,id",
+            "title" => "required",
+            "body" => "required",
+        ]);
+
+        $thread->update($request->all());
+
+        return redirect()->route("thread", $thread);
+    }
 }
