@@ -56,8 +56,10 @@
                                 </svg>
 
                                 {{ $thread->replies_count }} {{ Str::plural('Respuesta', $thread->replies_count) }}
-                                |
-                                <a href="{{ route('threads.edit', $thread) }}" class="hover:text-white">Editar</a>
+                                @can("update", $thread)
+                                    |
+                                    <a href="{{ route('threads.edit', $thread) }}" class="hover:text-white">Editar</a>
+                                @endcan
                             </span>
                         </p>
                     </div>

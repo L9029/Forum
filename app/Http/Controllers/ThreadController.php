@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Thread;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class ThreadController extends Controller
 {
+    use AuthorizesRequests;
+
     public function create(Thread $thread)
     {
         $categories = Category::get();
@@ -33,6 +36,8 @@ class ThreadController extends Controller
 
     public function edit(Thread $thread)
     {
+        $this->authorize("update", $thread);
+
         $categories = Category::get();
 
         return view("thread.edit", [
@@ -43,6 +48,8 @@ class ThreadController extends Controller
 
     public function update(Request $request, Thread $thread)
     {
+        $this->authorize("update", $thread);
+
         $request->validate([
             "category_id" => "required|exists:categories,id",
             "title" => "required",

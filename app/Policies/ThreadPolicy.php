@@ -3,9 +3,9 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\Reply;
+use App\Models\Thread;
 
-class ReplyPolicy
+class ThreadPolicy
 {
     /**
      * Create a new policy instance.
@@ -16,14 +16,14 @@ class ReplyPolicy
     }
 
     /**
-     * Determina si un usuario tiene acceso a cierta respuesta.
+     * Determina si un usuario tiene acceso a cierta pregunta.
      * 
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Reply  $reply
+     * @param  \App\Models\Thread  $thread
      * @return bool
      */
-    public function update(User $user, Reply $reply)
+    public function update(User $user, Thread $thread)
     {
-        return $user->id === $reply->user_id;
+        return $user->id === $thread->user_id;
     }
 }
