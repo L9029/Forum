@@ -8,9 +8,27 @@ use App\Models\Thread;
 
 class ThreadController extends Controller
 {
-    public function create()
+    public function create(Thread $thread)
     {
-        //
+        $categories = Category::get();
+
+        return view("thread.create", [
+            "categories" => $categories,
+            "thread" => $thread,
+        ]);
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            "category_id" => "required|exists:categories,id",
+            "title" => "required",
+            "body" => "required",
+        ]);
+
+        auth()->user()->threads()->create($request->all());
+
+        return redirect()->route("dashboard");
     }
 
     public function edit(Thread $thread)
